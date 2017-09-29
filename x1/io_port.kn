@@ -1,0 +1,18 @@
+{X1 Fake III Library}
+
+ {I/Oポート}
++class ioPort()
+	{I/Oポート
+	  16#2000 - 16#27FF : Text attribute
+	  16#3000 - 16#37FF : Character code
+	}
+	+var map: []bit8
+	
+	{ コンストラクタ
+	  I/O ポートを初期化する
+	}
+	*func ctor()
+		do me.map :: #[65536]bit8
+		do me.map.fill(0b8)
+	end func
+end class

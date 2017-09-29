@@ -1,0 +1,20 @@
+{ X1 Fake III }
+
+func main()
+	var ioPort: \x1\io_port@ioPort :: #\x1\io_port@ioPort {X1 I/O ポート初期化}
+	var texFont: draw@Tex :: draw@makeTex("res/x1font.png") {フォント}
+	var texBack: draw@Tex :: draw@makeTex("res/back.png") {背景画像}
+	
+
+	var wndMain: wnd@Wnd :: wnd@makeWnd(null, %aspect, 640, 400, "X1 Fake III") {ウインドウの生成}
+	var drawMain: wnd@Draw :: wnd@makeDraw(wndMain, 0, 0, 640, 400, %scale, %scale, false) {ドローコントロールの生成}
+	do draw@clearColor(16#FF000000) {背景色の設定}
+	do draw@sampler(%point)
+	while (wnd@act())
+		; 背景描画
+		do texBack.draw(0.0, 0.0, 0.0, 0.0, 640.0, 400.0, draw@black)
+		; フォント描画
+		do texFont.drawScale(0.0, 0.0, 256.0, 256.0, 0.0, 0.0, 128.0, 128.0, draw@white)
+		do draw@render(60)
+	end while
+end func
